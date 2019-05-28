@@ -129,12 +129,35 @@ export class DiscoService {
       id: this.musicas.length + 1,
       titulo,
       idGenero: g.id,
-      artistas: listaArtistas
+      artistas: listaArtistas,
+      gostei: 0,
+      naogostei:0
     };
     this.musicas.push(musica);
     return musica;
   }
-
+  gostar(musica){
+    if (musica.gostei===0 && musica.naogostei===0){
+      musica.gostei++
+    }
+    else{
+        musica.gostei++
+        if(musica.naogostei>0){
+          musica.naogostei--
+        }
+      }
+    }
+  naogostar(musica){
+    if (musica.naogostei===0 && musica.gostei===0){
+      musica.naogostei++
+    }
+    else{
+      musica.naogostei++
+      if (musica.gostei>0){
+        musica.gostei--
+      }   
+    }
+  }
   /**
    * Encontra e retorna um artista.
    * 
